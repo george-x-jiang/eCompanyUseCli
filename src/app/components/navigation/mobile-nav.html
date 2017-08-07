@@ -1,0 +1,43 @@
+
+<div class="mobile-nav">
+    <div id="dd" class="wrapper-dropdown-3" tabindex="1" [ngClass]="{'active': mobileToggleDropdown}" (click)="mobileToggleDropdown = !mobileToggleDropdown">
+        <span><span [ngClass]="tabHeadingCss"></span> {{tabHeadingText}} </span>
+        <ul class="dropdown">
+            <li>
+                <a [routerLink]="['/dashboard']" routerLinkActive="active">
+                    <span class="glyphicon glyphicon-home"></span>
+                    <label>Dashboard</label>
+                    <!--<span class="indicator">1</span>-->
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/profile']" routerLinkActive="active">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <label>Profile</label>
+                </a>
+            </li>
+            <li *ngIf="isCasualBuyer">
+                <a [routerLink]="['/verify/mobile']" routerLinkActive="active">
+                    <span class="glyphicon glyphicon-check"></span>
+                    <label>Verify</label>
+                    <!--<span class="indicator">2</span>-->
+                </a>
+            </li>
+            <li *ngIf="isCasualBuyer">
+                <a [routerLink]="['/billing']" routerLinkActive="active">
+                    <span class="glyphicon glyphicon-credit-card"></span>
+                    <label>Billing</label>
+                </a>
+            </li>
+            <!--<li>-->
+                <!--<a [routerLink]="['/subscribe']" routerLinkActive="active">-->
+                    <!--<span class="glyphicon glyphicon-bullhorn"></span>-->
+                    <!--<label>Subscribe</label>-->
+                <!--</a>-->
+            <!--</li>-->
+
+        </ul>
+    </div>
+</div>
+
+

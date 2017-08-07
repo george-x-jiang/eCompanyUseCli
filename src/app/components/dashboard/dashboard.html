@@ -1,0 +1,82 @@
+<div id="dashboard-container">
+
+    <h3>eCompany <span *ngIf="!isCasualBuyer">Dealer</span> Dashboard</h3>
+
+    <div class="profile-meter">
+        <span class="meter" style="transition-duration:0.5s" [ngStyle]="{'width': percentageComplete()}"></span>
+        <span class="percentage">{{percentageComplete()}} <span class="hidden-xs">Complete</span></span>
+        <span class="marker"></span>
+    </div>
+
+    <h2 class="welcome-title">Welcome {{firstName}} <a href="/c/portal/logout" class="btn btn-primary btn-myProfile-primary pull-right">Logout</a></h2>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <a [routerLink]="['/subscribe']"><img src="../../../assets/advert-subscribe.jpg" alt="advert Subscribe" class="img-responsive"></a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default eCompany-dash-panel">
+                <div class="panel-body">
+                    <h3 *ngIf="isCasualBuyer"><span class="glyphicon glyphicon-check"></span> Tasks to Complete</h3>
+                    <h3 *ngIf="!isCasualBuyer"><span class="glyphicon glyphicon-check"></span> Permanent Buyer Officer Details</h3>
+                    <ul class="tasks" *ngIf="isCasualBuyer">
+                        <li><span class="glyphicon glyphicon-ok green"></span> <span class="info">Create Account</span></li>
+                        <li><span class="glyphicon glyphicon-remove blue"></span> <a [routerLink]="['/profile']" class="list-item">Update Profile</a></li>
+                        <li><span class="glyphicon glyphicon-remove blue"></span> <a [routerLink]="['/billing']" class="list-item">Update Billing</a></li>
+                        <li><span class="glyphicon glyphicon-remove blue"></span> <a [routerLink]="['/verify/mobile']" class="list-item">Verify my Mobile Number</a></li>
+                        <li><span class="glyphicon glyphicon-remove blue"></span> <a [routerLink]="['/verify/driver-licence']" class="list-item">Verify my Drivers Licence</a></li>
+                    </ul>
+
+                    <ul class="tasks" *ngIf="!isCasualBuyer">
+                        <li><span class="glyphicon glyphicon-map-marker blue"></span> <span class="info">Permanent Buyer Officer</span></li>
+                        <li><span class="glyphicon glyphicon-phone-alt blue"></span> <span class="info">Phone: (02) 9704 6644</span></li>
+                        <li><span class="glyphicon glyphicon-print blue"></span> <span class="info">Fax: (02) 9704 6721</span></li>
+                        <li><span class="glyphicon glyphicon-envelope blue"></span> <span class="info">E-mail: buyer@ecompany.com.au</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default eCompany-dash-panel" *ngIf="!isCasualBuyer">
+                <div class="panel-body">
+                    <h3><span class="glyphicon glyphicon-briefcase"></span> Dealer Area</h3>
+                    <ul class="tasks">
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="#" class="list-item">Toyota</a></li>
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="#" class="list-item">VolksWagen</a></li>
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="#" class="list-item">BMW</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default eCompany-dash-panel">
+                <div class="panel-body">
+                    <h3><span class="glyphicon glyphicon-star"></span> Useful Links</h3>
+
+                    <!--Casual Buyer links-->
+                    <ul class="tasks" *ngIf="isCasualBuyer">
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="http://www.ecompany.com.au/about/terms-and-conditions" class="list-item" target="_blank">Terms &amp; Conditions</a></li>
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="http://www.ecompany.com.au/about/frequently-asked-questions/buying-at-auction" class="list-item" target="_blank">Buying at Auction FAQ</a></li>
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="http://www.ecompany.com.au/about/frequently-asked-questions/website-help" class="list-item" target="_blank">Website Help &amp; My eCompany Account</a></li>
+                    </ul>
+
+                    <!--Permanent Buyer links-->
+                    <ul class="tasks" *ngIf="!isCasualBuyer">
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="/about/frequently-asked-questions/buying-at-auction" class="list-item" target="_blank">Buying at Auction FAQ</a></li>
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="/about/frequently-asked-questions/website-help" class="list-item" target="_blank">Website Help and My eCompany Account</a></li>
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="/about/services/permanent-buyer-accounts" class="list-item" target="_blank">Permanent Buyer Information</a></li>
+                        <li><span class="glyphicon glyphicon-star blue"></span> <a href="/about/terms-and-conditions" class="list-item" target="_blank">Terms and Conditions</a></li>
+                    </ul>
+                </div>
+        </div>
+        </div>
+
+</div>
+    </div>

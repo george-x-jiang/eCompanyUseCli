@@ -1,0 +1,352 @@
+<div id="profile-section">
+
+  <form *ngIf="profileForm" [formGroup]="profileForm" novalidate (ngSubmit)="onSubmit()">
+
+    <div class="row" *ngIf="isCasualBuyer">
+      <div class="col-sm-12">
+        <h3>Profile</h3>
+        <hr>
+
+        <!--Server side error messages-->
+        <div class="alert alert-danger" *ngIf="errorMsg">
+          {{errorMsg}}
+        </div>
+          <div class="alert alert-success" *ngIf="successMsg">
+              {{successMsg}}
+          </div>
+          <!--End of Server side error messages-->
+      </div>
+      <div class="col-sm-6">
+
+        <div class="form-group md-input" [ngClass]="getErrorBorder('title')">
+
+          <label for="title-select">Title <span class="required">*</span></label>
+
+          <select name="title" id="title-select" class="form-control" formControlName="title">
+            <option [value]="title.value" *ngFor="let title of titles">{{title.label}}</option>
+          </select>
+
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.title">
+            {{ formErrors.title }}
+          </small>
+
+        </div>
+
+        <div class="form-group md-input" [ngClass]="getErrorBorder('givenName')">
+          <label for="firstname">First Name <span class="required">*</span></label>
+
+          <input type="text" class="form-control" id="firstname" placeholder="First Name" formControlName="givenName">
+
+          <!--************** form icon indicators *****************-->
+          <span [ngClass]="getIndicator('givenName')" aria-hidden="true" *ngIf="getIndicator('givenName')"></span>
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.givenName">
+            {{ formErrors.givenName }}
+          </small>
+
+          <!--************** End of of validation messages *****************-->
+        </div>
+
+        <div class="form-group md-input" [ngClass]="getErrorBorder('surname')">
+          <label for="lastname">Last Name <span class="required">*</span></label>
+          <input type="text" class="form-control" id="lastname" formControlName="surname" placeholder="Last name" >
+
+          <!--************** form icon indicators *****************-->
+          <span [ngClass]="getIndicator('surname')" aria-hidden="true" *ngIf="getIndicator('surname')"></span>
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.surname">
+            {{ formErrors.surname }}
+          </small>
+
+        </div>
+
+        <div class="form-group md-input">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" class="form-control" id="email" formControlName="email" readonly >
+        </div>
+
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group xs-input" [ngClass]="getErrorBorder('dob')">
+          <label for="dob">Date of Birth <span class="required">*</span></label>
+          <input type="text" class="form-control" id="dob" formControlName="dob" placeholder="DD/MM/YYYY" [readonly]="userProfile.dob">
+
+          <!--************** form icon indicators *****************-->
+          <span [ngClass]="getIndicator('dob')" aria-hidden="true" *ngIf="getIndicator('dob')"></span>
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.dob">
+            {{ formErrors.dob }}
+          </small>
+        </div>
+
+        <!--TODO - to be added in future release - descoped for now-->
+        <!--<div class="form-group" >-->
+        <!--<label for="fileupload">Profile Pic</label>-->
+        <!--<div class="clearfix"></div>-->
+        <!--<div style="position:relative;">-->
+        <!--<a class='btn btn-primary' href='javascript:;'>-->
+        <!--Choose File...-->
+        <!--<input type="file" id="fileupload" formControlName="profilePic" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="fileupload" size="40"  onchange='$("#upload-file-info").html($(this).val());'>-->
+        <!--</a>-->
+        <!--&nbsp;-->
+        <!--<span class='label label-info' id="upload-file-info"></span>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <div class="form-group md-input" [ngClass]="getErrorBorderSelect('gender')">
+          <label for="gender-select">Gender <span class="required">*</span></label>
+          <select name="gender" id="gender-select" class="form-control" formControlName="gender">
+            <option [value]="gender.value" *ngFor="let gender of genders">{{gender.label}}</option>
+          </select>
+
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.gender">
+            {{ formErrors.gender }}
+          </small>
+        </div>
+
+
+        <div class="form-group">
+          <label>&nbsp;</label><br>
+          <a href="/my-accounts/change-password" class="btn btn-default"><span class="glyphicon glyphicon-lock"></span> Change Password</a>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+      </div>
+
+      <div class="col-sm-6">
+        <h3>Address</h3>
+        <hr>
+        <div class="form-group">
+          <label>Select Country <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-inline" *ngFor="let country of countries">
+              <input type="radio" formControlName="country" [value]="country.value">{{ country.label }}
+            </label>
+          </div>
+        </div>
+        <div class="form-group md-input" [ngClass]="getErrorBorder('addressLine1')">
+          <label for="streetAddress1">Street Address <span class="required">*</span></label>
+          <input type="text" class="form-control" placeholder="Street Address 1" id="streetAddress1" formControlName="addressLine1" maxlength="255">
+
+          <!--************** form icon indicators *****************-->
+          <span [ngClass]="getIndicator('addressLine1')" aria-hidden="true" *ngIf="getIndicator('addressLine1')"></span>
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.addressLine1">
+            {{ formErrors.addressLine1 }}
+          </small>
+
+        </div>
+        <div class="form-group md-input">
+          <input type="text" class="form-control" placeholder="Street Address 2" id="streetAddress2" formControlName="addressLine2" maxlength="255">
+
+        </div>
+
+        <div class="form-group sm-input" [ngClass]="getErrorBorder('suburb')">
+          <label for="suburb">Suburb/City <span class="required">*</span></label>
+          <input type="text" class="form-control" placeholder="Suburb" id="suburb" formControlName="suburb">
+          <!--************** form icon indicators *****************-->
+          <span [ngClass]="getIndicator('suburb')" aria-hidden="true" *ngIf="getIndicator('suburb')"></span>
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.suburb">
+            {{ formErrors.suburb }}
+          </small>
+        </div>
+        <div class="form-group md-input">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group" [ngClass]="getErrorBorder('postcode')">
+                <label for="postcode">Postcode <span class="required">*</span></label>
+                 <input type="text" class="form-control" maxlength="4" placeholder="Postcode" id="postcode" formControlName="postcode">
+
+                <!--************** form icon indicators *****************-->
+                <span [ngClass]="getIndicator('postcode')" aria-hidden="true" *ngIf="getIndicator('postcode')"></span>
+                <!--************** Start of validation messages *****************-->
+
+                <small class="text-danger" *ngIf="formErrors.postcode">
+                  {{ formErrors.postcode }}
+                </small>
+
+              </div>
+
+            </div>
+   
+            <div class="col-md-6">
+              <div class="form-group" [ngClass]="getErrorBorderSelect('state')" *ngIf="profileForm.controls.country.value == 'Australia'">
+                <label for="state" class="inline-top-space">State <span class="required">*</span></label>
+                <select id="state" class="form-control" formControlName="state">
+                  <option [value]="state.value" *ngFor="let state of states">{{state.label}}</option>
+                </select>
+
+                <!--************** Start of validation messages *****************-->
+                <small class="text-danger" *ngIf="formErrors.state">
+                  {{ formErrors.state }}
+                </small>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h3>Optional</h3>
+        <hr>
+        <div class="form-group md-input">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group" [ngClass]="getErrorBorderSelect('homePhone')">
+                <label for="homePhone">Home Tel No.</label>
+                <input type="text" id="homePhone" class="form-control" placeholder="Home Telephone number" formControlName="homePhone">
+
+                <!--************** Start of validation messages *****************-->
+                <small class="text-danger" *ngIf="formErrors.homePhone">
+                  {{ formErrors.homePhone }}
+                </small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" [ngClass]="getErrorBorderSelect('fax')">
+                <label for="fax" class="inline-top-space">Fax Number</label>
+                <input type="text" id="fax" class="form-control" placeholder="Fax number" formControlName="fax">
+                <!--************** Start of validation messages *****************-->
+                <small class="text-danger" *ngIf="formErrors.fax">
+                  {{ formErrors.fax }}
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group md-input" [ngClass]="getErrorBorderSelect('organisation')">
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" class="form-control" placeholder="Company name" formControlName="organisation" maxlength="255">
+            <!--************** Start of validation messages *****************-->
+            <small class="text-danger" *ngIf="formErrors.organisation">
+              {{ formErrors.organisation }}
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group md-input" [ngClass]="getErrorBorderSelect('motorDealer')">
+          <div class="form-group">
+            <label for="dealer">Dealer No.</label>
+            <input type="text" id="dealer" name="dealer" class="form-control" placeholder="Dealer number" formControlName="motorDealer">
+            <!--************** Start of validation messages *****************-->
+            <small class="text-danger" *ngIf="formErrors.motorDealer">
+              {{ formErrors.motorDealer }}
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group md-input" [ngClass]="getErrorBorderSelect('driversLicence')">
+          <div class="form-group">
+            <label for="licence">Driver Licence No.</label>
+            <input type="text" id="licence" name="licence" class="form-control" placeholder="Licence no." formControlName="driversLicence"
+                   [readonly]="userProfile.driversLicence">
+            <!--************** Start of validation messages *****************-->
+            <small class="text-danger" *ngIf="formErrors.driversLicence">
+              {{ formErrors.driversLicence }}
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <hr />
+        <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid">
+          Save Profile
+        </button>
+
+        <!--button (click)=save() class="btn btn-default">
+          Fire Event
+        </button-->
+      </div>
+
+    </div>
+
+
+
+    <div class="row" *ngIf="!isCasualBuyer">
+      <div class="col-sm-12">
+        <h3>Profile</h3>
+        <hr>
+      </div>
+
+      <div class="col-sm-6">
+        <!--TODO - awaiting outcome from Jayesh on title for Perm Buyer-->
+
+          <!--<div class="form-group md-input" [ngClass]="getErrorBorder('title')">-->
+
+          <!--<label for="title-select">Title <span class="required">*</span></label>-->
+
+          <!--<select name="title" id="title-select" class="form-control" formControlName="title">-->
+            <!--<option [value]="title.value" *ngFor="let title of titles">{{title.label}}</option>-->
+          <!--</select>-->
+
+          <!--&lt;!&ndash;************** Start of validation messages *****************&ndash;&gt;-->
+
+          <!--<small class="text-danger" *ngIf="formErrors.title">-->
+            <!--{{ formErrors.title }}-->
+          <!--</small>-->
+
+        <!--</div>-->
+
+        <div class="form-group md-input" [ngClass]="getErrorBorder('givenName')">
+          <label for="firstname">First name <span class="required">*</span></label>
+
+          <input type="text" class="form-control " id="firstname" placeholder="First Name" formControlName="givenName">
+
+          <!--************** form icon indicators *****************-->
+          <span [ngClass]="getIndicator('givenName')" aria-hidden="true" *ngIf="getIndicator('givenName')"></span>
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.givenName">
+            {{ formErrors.givenName }}
+          </small>
+
+          <!--************** End of of validation messages *****************-->
+        </div>
+
+        <div class="form-group md-input" [ngClass]="getErrorBorder('surname')">
+          <label for="lastname">Last name <span class="required">*</span></label>
+          <input type="text" class="form-control" id="lastname" formControlName="surname" placeholder="Last name" >
+
+          <!--************** form icon indicators *****************-->
+          <span [ngClass]="getIndicator('surname')" aria-hidden="true" *ngIf="getIndicator('surname')"></span>
+          <!--************** Start of validation messages *****************-->
+
+          <small class="text-danger" *ngIf="formErrors.surname">
+            {{ formErrors.surname }}
+          </small>
+
+        </div>
+
+        <div class="form-group md-input">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" class="form-control" id="email" [value]="userProfile.email" readonly >
+        </div>
+
+      </div>
+
+      <div class="col-sm-12">
+        <hr />
+        <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid">
+          Save Profile
+        </button>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,33 @@
+#profile-section {
+  .dob-field {
+    max-width:50%;
+    @media(width: 768px){
+      max-width: 100%;
+    }
+  }
+  .btn {
+    padding:9px 12px;
+  }
+  label.inline-top-space {
+    margin-top: 12px;
+    @media(min-width: 992px){
+    margin-top: 0;
+    }
+  }
+  .form-control-feedback {
+    top:29px;
+    right:0;
+  }
+
+  .green {
+    color: #009d00;
+  }
+  .red {
+    color: #bd0000;
+  }
+  .radio-group {
+    display:block;
+    padding:10px 0;
+  }
+}
+

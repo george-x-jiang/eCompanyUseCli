@@ -1,0 +1,102 @@
+<div role="tabpanel" class="tab-pane" id="driving-licence">
+    <div class="row">
+        <form [formGroup]="drivingLicenceForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="col-sm-6">
+
+                <div class="form-group md-input" [ngClass]="getErrorBorderSelect('firstname')">
+                    <label>First Name <span class="required">*</span></label>
+                    <input type="text" class="form-control" placeholder="First name" formControlName="firstname">
+
+                    <!--************** form icon indicators *****************-->
+                    <span [ngClass]="getIndicator('firstname')" aria-hidden="true" *ngIf="getIndicator('firstname')"></span>
+                    <!--************** Start of validation messages *****************-->
+
+                    <small class="text-danger" *ngIf="formErrors.firstname">
+                        {{ formErrors.firstname }}
+                    </small>
+                </div>
+                <div class="form-group md-input" [ngClass]="getErrorBorderSelect('stateOfIssue')">
+                        <label for="state" class="inline-top-space">State <span class="required">*</span></label>
+                        <select id="state" class="form-control" formControlName="stateOfIssue">
+                            <option [value]="state.value" *ngFor="let state of states">{{state.label}}</option>
+                        </select>
+
+                        <!--************** Start of validation messages *****************-->
+                        <small class="text-danger" *ngIf="formErrors.stateOfIssue">
+                            {{ formErrors.stateOfIssue }}
+                        </small>
+
+                </div>
+
+                <div class="form-group xs-input" [ngClass]="getErrorBorderSelect('dob')">
+                    <label>Date of Birth <span class="required">*</span></label>
+                    <input type="text" class="form-control " formControlName="dob" placeholder="DD/MM/YYYY">
+                    <!--************** form icon indicators *****************-->
+                    <span [ngClass]="getIndicator('dob')" aria-hidden="true" *ngIf="getIndicator('dob')"></span>
+                    <!--************** Start of validation messages *****************-->
+
+                    <small class="text-danger" *ngIf="formErrors.dob">
+                        {{ formErrors.dob }}
+                    </small>
+                </div>
+
+
+        </div>
+        <div class="col-sm-6">
+
+                <div class="form-group md-input" [ngClass]="getErrorBorderSelect('lastname')">
+                    <label>Last Name <span class="required">*</span></label>
+                    <input type="text" class="form-control" placeholder="Last name" formControlName="lastname">
+
+                    <!--************** form icon indicators *****************-->
+                    <span [ngClass]="getIndicator('lastname')" aria-hidden="true" *ngIf="getIndicator('lastname')"></span>
+                    <!--************** Start of validation messages *****************-->
+
+                    <small class="text-danger" *ngIf="formErrors.lastname">
+                        {{ formErrors.lastname }}
+                    </small>
+                </div>
+
+                <div class="form-group md-input" [ngClass]="getErrorBorderSelect('licenceNo')">
+                    <label>Licence No. <span class="required">*</span></label>
+                    <input type="text" class="form-control" placeholder="Licence Number" formControlName="licenceNo">
+                    <!--************** form icon indicators *****************-->
+                    <span [ngClass]="getIndicator('licenceNo')" aria-hidden="true" *ngIf="getIndicator('licenceNo')"></span>
+                    <!--************** Start of validation messages *****************-->
+
+                    <small class="text-danger" *ngIf="formErrors.licenceNo">
+                        {{ formErrors.licenceNo }}
+                    </small>
+                </div>
+
+        </div>
+        <div class="col-sm-12">
+            <hr>
+            <button class="btn btn-primary" type="submit" [disabled]="!drivingLicenceForm.valid">Verify My Details</button>
+
+            <hr>
+
+            <h3>Don’t have an Australian Driver’s Licence?</h3>
+            <p>Please email <a href="mailto:InfoUpdate@ecompany.com.au">InfoUpdate@ecompany.com.au</a> the following information:</p>
+
+            <ul>
+                <li>Full Name</li>
+                <li>Email</li>
+                <li>Telephone Number</li>
+                <li>Address</li>
+                <li>Copy of your driver’s licence, passport, or government issued identity card</li>
+            </ul>
+
+        </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="col-sm-12">
+    <hr />
+    <button class="btn btn-primary">
+        Verify
+    </button>
+</div>
+

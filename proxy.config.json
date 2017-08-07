@@ -1,0 +1,10 @@
+{
+  "/delegate/secured/jwt-token": {
+    "target": "http://localhost:3001",
+    "secure": false
+  },
+  "/useradmin-service": {
+    "target": "http://localhost:3001",
+    "secure": false
+  }
+}

@@ -1,1 +1,115 @@
 /* You can add global styles to this file, and also import other style files */
+
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap";
+
+$pickle-brand-color: #165ba0;
+#my-profile-spa {
+  padding-left:0;
+  padding-right:0;
+  h3 {
+    color:$pickle-brand-color;
+    font-size:1.3em;
+    letter-spacing: -1px;
+    font-weight:600;
+  }
+  .tabs-content {
+    @media(max-width: 550px){
+      width:100%;
+      top:15px;
+      border-radius: 8px;
+    }
+  }
+
+  h2 {
+    color:$pickle-brand-color;
+    font-size:2.2em;
+    letter-spacing: -1px;
+    font-weight:600;
+  }
+  .form-control {
+    height:42px;
+    line-height: 42px;
+    padding: 9px 12px;
+  }
+  .xs-input {
+    max-width:30%;
+    @media(max-width: 992px){
+      max-width: 50%;
+    }
+    @media(max-width: 768px){
+      max-width: 85%;
+    }
+    @media(max-width: 400px){
+      max-width: 100%;
+    }
+  }
+  .sm-input {
+    max-width:50%;
+    @media(max-width: 768px){
+      max-width: 85%;
+    }
+    @media(max-width: 400px){
+      max-width: 100%;
+    }
+  }
+  .md-input {
+    max-width: 85%;
+    @media(max-width: 400px){
+      max-width: 100%;
+    }
+  }
+  .required {
+    color: #d10000;
+  }
+  .date-picker-container {
+    max-width: 250px;
+    .mydp {
+      height:42px !important;
+      border:1px solid #CCC !important;
+      .selection {
+        height:40px !important;
+        line-height:40px !important;
+        font-weight: 500;
+      }
+      .selbtngroup {
+        height: 40px !important;
+      }
+    }
+  }
+  .form-control-feedback {
+    top:29px;
+    right:0;
+  }
+
+  .green {
+    color: #009d00;
+  }
+  .red {
+    color: #bd0000;
+  }
+}
+
+#app-loader {
+  width:40px;
+  height:40px;
+  position:absolute;
+  top:20%;
+  left:50%;
+  margin-left:-20px;
+}
+
+// IE9 and lower alert to update browser
+.ie-alert-message {
+  display:none;
+  font-family: Helvetica,Arial,sans-serif;
+  img {  width:24px; height:24px; margin-right:10px;
+  }
+}
+
+.ie9 .ie-alert-message {
+  display:block;
+}
+.ie9 .tab-nav-container {
+  margin-top:15px;
+}

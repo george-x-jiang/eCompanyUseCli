@@ -1,0 +1,24 @@
+
+<div class="tab-nav">
+  <a [routerLink]="['/dashboard']" routerLinkActive="active">
+    <span class="glyphicon glyphicon-home"></span>
+    <label>Dashboard</label>
+    <!--<span class="indicator">1</span>-->
+  </a>
+  <a [routerLink]="['/profile']" routerLinkActive="active">
+    <span class="glyphicon glyphicon-user"></span>
+    <label>Profile</label>
+  </a>
+  <a *ngIf="isCasualBuyer" [routerLink]="['/verify/mobile']" routerLinkActive="active">
+    <span class="glyphicon glyphicon-check"></span>
+    <label>Verify</label>
+  </a>
+  <a *ngIf="isCasualBuyer" [routerLink]="['/billing']" routerLinkActive="active">
+    <span class="glyphicon glyphicon-credit-card"></span>
+    <label>Billing</label>
+  </a>
+  <!--<a [routerLink]="['/subscribe']" routerLinkActive="active">-->
+    <!--<span class="glyphicon glyphicon-bullhorn"></span>-->
+    <!--<label>Subscribe</label>-->
+  <!--</a>-->
+</div>

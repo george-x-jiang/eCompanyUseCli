@@ -1,0 +1,196 @@
+
+/* entire container, keeps perspective */
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .flipper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+#billing-container {
+  .form-group {
+    .help-block {
+      color: #737373;
+    }
+  }
+
+  .card-img-form {
+    position: absolute;
+    right:15px;
+    top:0;
+    .sml-version {
+      max-width:40px;
+      &.mastercard {
+        max-width: 35px;
+      }
+      &.visa {
+        margin-top:4px;
+      }
+    }
+  }
+
+  /* entire container, keeps perspective */
+
+  .flip-container {
+    perspective: 1000px;
+    font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+    transform-style: preserve-3d;
+    &:hover {
+      .back {
+        transform: rotateY(0deg);
+      }
+      .front {
+        transform: rotateY(180deg);
+      }
+    }
+    &.flipped {
+        .back {
+          transform: rotateY(0deg);
+        }
+        .front {
+          transform: rotateY(180deg);
+        }
+    }
+    @include aspect-ratio(100, 63.8);
+    @media(max-width: 992px) {
+      display:none;
+    }
+  }
+
+  /*  UPDATED! flip the pane when hovered */
+
+  .front, .back {
+    width: 100%;
+    height: 100%;
+    //@media(min-width: 992px) and (max-width:1200px){
+    //  height:226px;
+    //}
+  }
+
+  /* flip speed goes here */
+
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  /* hide back of pane during swap */
+
+  .front, .back {
+    backface-visibility: hidden;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .content-holder {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /*  UPDATED! front pane, placed above back */
+
+  .front {
+    z-index: 2;
+    transform: rotateY(0deg);
+    background: url('../../../assets/Credit-card-front.png');
+    background-size: contain;
+  }
+
+  .cc-number {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    letter-spacing: 8px;
+    font-size: 1.9em;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+    @media(min-width: 992px) and (max-width:1200px){
+      font-size: 1.4em;
+    }
+  }
+
+  .cc-name {
+    position: absolute;
+    bottom: 18%;
+    text-transform: uppercase;
+    left: 35px;
+    color: #333;
+    font-size: 1.4em;
+  }
+
+  .cc-expiry {
+    position: absolute;
+    bottom: 19%;
+    right: 37px;
+  }
+
+  .cc-logo {
+    position: absolute;
+    right: 25px;
+    max-width: 100px;
+    top: 25px;
+    text-align: right;
+    > img {
+      max-width: 100px;
+    }
+  }
+
+  /* back, initially hidden pane */
+
+  .back {
+    transform: rotateY(-180deg);
+    background: url('../../../assets/Credit-card-back.png');
+    background-size: contain;
+  }
+
+  .cc-cvv {
+    position: absolute;
+    bottom: 36%;
+    right: 19%;
+    font-size: 1.2em;
+  }
+
+  /*
+      Some vertical flip updates
+  */
+
+  .vertical {
+    &.flip-container {
+      position: relative;
+    }
+    .back {
+      transform: rotateX(180deg);
+    }
+    &.flip-container:hover {
+      .back {
+        transform: rotateX(0deg);
+      }
+      .front {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+
+  .second-select {
+    @media(max-width:768px){
+      margin-top: 15px;
+    }
+  }
+
+}

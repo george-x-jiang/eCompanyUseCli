@@ -1,0 +1,47 @@
+<div role="tabpanel" class="tab-pane active" id="mobile">
+    <label for="inputPassword2">Mobile No. <span class="required">*</span></label>
+    <form class="form-inline">
+        <div class="form-group">
+            <input type="text" class="form-control" id="inputPassword2" placeholder="Enter mobile number">
+        </div>
+        <button class="btn btn-primary" (click)="openModal(modalTemplate)">Verify via SMS</button>
+    </form>
+
+    <hr>
+
+    <h3>Non-Australian Number?</h3>
+    <p>Please email <a href="mailto:InfoUpdate@ecompany.com.au">InfoUpdate@ecompany.com.au</a> the following information:</p>
+
+    <ul>
+        <li>Full Name</li>
+        <li>Email</li>
+        <li>Telephone Number</li>
+        <li>Address</li>
+        <li>Copy of Drivers Licence or Passport</li>
+    </ul>
+
+</div>
+
+<ng-template #modalTemplate>
+
+    <div class="verify-mobile">
+
+        <div class="modal-content">
+
+            <h2>Please verify your Mobile number</h2>
+            <p>In order to verify your mobile number, please enter the code you received via SMS below. Please allow up to 2 minutes to receive this code.</p>
+
+            <form action="" class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter verification code">
+                </div>
+                <button class="btn btn-primary">Verify via SMS</button><button class="btn" (click)="modalRef.hide()">Cancel</button>
+            </form>
+
+            <a href="/about/terms-and-conditions/privacy-policy" target="_blank">Privacy Policy</a> | <a href="#">Resend Verification Code via SMS</a>
+
+        </div>
+
+    </div>
+
+</ng-template>
