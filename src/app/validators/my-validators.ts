@@ -2,8 +2,8 @@ import {FormGroup, FormControl} from '@angular/forms';
 import * as moment from 'moment';
 
 export function allRequiredValidator({value}: FormGroup): { [key: string]: any } {
-  let controls = Object.keys(value || {});
-  let valid = controls.every(control => !!value[control]);
+  const controls = Object.keys(value || {});
+  const valid = controls.every(control => !!value[control]);
 
   return valid ? null : {
     allRequired: true

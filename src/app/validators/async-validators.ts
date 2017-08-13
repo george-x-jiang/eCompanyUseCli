@@ -17,11 +17,11 @@ export class AsyncValidators {
   asyncValidationEventQueue$ = this.asyncValidationEventSource.asObservable();
 
   postcodeMustBeValid(control: FormControl): Observable<any> {
-    if (control.value.length != 4) {
+    if (control.value.length !== 4) {
       return Observable.of(null);
     }
 
-    let observable = this.http.get(this.POSTCODE_SERVICE_URL + '/' + control.value)
+    const observable = this.http.get(this.POSTCODE_SERVICE_URL + '/' + control.value)
       .map((res) => this.validatePostcode(res))
       .catch(() => Observable.of(null));
 
@@ -33,8 +33,8 @@ export class AsyncValidators {
     // raise event after the current function completes execution
     setTimeout(() => this.asyncValidationEventSource.next('done'), 0);
 
-    let dataForPostcode = res.json();
-    if (!dataForPostcode.length || dataForPostcode.length == 0) {
+    const dataForPostcode = res.json();
+    if (!dataForPostcode.length || dataForPostcode.length === 0) {
       return ({
         postcodeMustBeValid: true
       });
