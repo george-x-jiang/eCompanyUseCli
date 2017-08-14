@@ -1,6 +1,4 @@
 import {Component, ViewEncapsulation, OnInit, NgZone} from '@angular/core';
-import {ProfileService} from './services/profile.service';
-import {DriverLicenceService} from './services/driver-licence.service';
 import {UserTokenService} from './services/user-token.service';
 import {PERMANENT_BUYER_YES} from './app.constants';
 
@@ -13,9 +11,7 @@ import {PERMANENT_BUYER_YES} from './app.constants';
 export class AppComponent implements OnInit {
 
   constructor(private ngZone: NgZone,
-              private userTokenService: UserTokenService,
-              private profileService: ProfileService,
-              private driverLicenceService: DriverLicenceService) {
+              private userTokenService: UserTokenService) {
   }
 
   isCasualBuyer = true;
