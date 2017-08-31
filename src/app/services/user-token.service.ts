@@ -26,7 +26,7 @@ export class UserTokenService {
     } else {
       // example header (not necessary)
       const headers = new Headers();
-      headers.append('Content-Type', 'application/json');
+      headers.append('Accept', 'application/json');
       // create the request, store the `Observable` for subsequent subscribers
       this.observable = this.http.get(GET_TOKEN_SERVICE_URL)
         .map(res => this.extractAndStoreData(res))

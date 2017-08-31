@@ -19,7 +19,7 @@ export class ProfileService {
   getProfile(externalAuthId: string): Observable<any> {
     // example header (not necessary)
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
     // create the request, store the `Observable` for subsequent subscribers
     const observable = this.http.get(this.USER_PROFILE_SERVICE_URL + '/' + externalAuthId)
       .map(this.extractData)
