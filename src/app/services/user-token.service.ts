@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Http, Response, Headers} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import '../rxjs-extensions';
-import {PERMANENT_BUYER_ROLE, GET_TOKEN_SERVICE_URL} from '../app.constants';
-import {TokenDetails} from '../models/token-details';
+import { PERMANENT_BUYER_ROLE, GET_TOKEN_SERVICE_URL } from '../app.constants';
+import { TokenDetails } from '../models/token-details';
 
 @Injectable()
 export class UserTokenService {
@@ -38,7 +38,7 @@ export class UserTokenService {
   }
 
   private extractAndStoreData(res: Response) {
-    const {username, expiresInSecs, roles} = res.json();
+    const { username, expiresInSecs, roles } = res.json();
     if (username) {
       const permanentBuyerFlag =
         (roles && roles.indexOf && roles.indexOf(PERMANENT_BUYER_ROLE) >= 0) ? 'Y' : 'N';

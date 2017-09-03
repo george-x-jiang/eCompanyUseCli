@@ -1,4 +1,4 @@
-import {Component, TemplateRef, ViewEncapsulation} from '@angular/core';
+import { Component, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
@@ -10,10 +10,11 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 export class VerifyMobileComponent {
 
-  public modalRef: BsModalRef;
-  constructor(private modalService: BsModalService) {}
+  modalRef: BsModalRef;
 
-  public openModal(template: TemplateRef<any>) {
+  constructor(private modalService: BsModalService) { }
+
+  openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 }

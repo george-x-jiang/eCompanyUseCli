@@ -1,6 +1,6 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {DriverLicenceService} from '../../services/driver-licence.service';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { DriverLicenceService } from '../../services/driver-licence.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'verify-driver-licence',
@@ -14,14 +14,14 @@ export class VerifyDriverLicenceComponent {
   public drivingLicenceForm: FormGroup;
 
   states = [
-    {label: 'Please select', value: ''},
-    {label: 'NSW', value: 'NSW'},
-    {label: 'QLD', value: 'QLD'},
-    {label: 'NT', value: 'NT'},
-    {label: 'WA', value: 'WA'},
-    {label: 'SA', value: 'SA'},
-    {label: 'VIC', value: 'VIC'},
-    {label: 'TAS', value: 'TAS'}
+    { label: 'Please select', value: '' },
+    { label: 'NSW', value: 'NSW' },
+    { label: 'QLD', value: 'QLD' },
+    { label: 'NT', value: 'NT' },
+    { label: 'WA', value: 'WA' },
+    { label: 'SA', value: 'SA' },
+    { label: 'VIC', value: 'VIC' },
+    { label: 'TAS', value: 'TAS' }
   ];
 
   formErrors = {

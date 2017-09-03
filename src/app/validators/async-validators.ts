@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import {FormControl} from '@angular/forms';
-import {USER_ADMIN_SERVICE_URL} from '../app.constants';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { FormControl } from '@angular/forms';
+import { USER_ADMIN_SERVICE_URL } from '../app.constants';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AsyncValidators {

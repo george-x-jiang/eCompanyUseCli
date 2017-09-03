@@ -1,13 +1,13 @@
-import {Component, ViewEncapsulation, OnInit, Inject, InjectionToken} from '@angular/core';
-import {ProfileService} from '../../services/profile.service';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {PERMANENT_BUYER_YES} from '../../app.constants';
-import {UserTokenService} from '../../services/user-token.service';
+import { Component, ViewEncapsulation, OnInit, Inject, InjectionToken } from '@angular/core';
+import { ProfileService } from '../../services/profile.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PERMANENT_BUYER_YES } from '../../app.constants';
+import { UserTokenService } from '../../services/user-token.service';
 import 'rxjs/add/operator/debounceTime';
-import {PageScrollService, PageScrollInstance, PageScrollConfig} from 'ng2-page-scroll';
-import {DOCUMENT} from '@angular/platform-browser';
-import {dateMustBeValid, mustBeAdult} from '../../validators/my-validators';
-import {AsyncValidators} from '../../validators/async-validators';
+import { PageScrollService, PageScrollInstance, PageScrollConfig } from 'ng2-page-scroll';
+import { DOCUMENT } from '@angular/platform-browser';
+import { dateMustBeValid, mustBeAdult } from '../../validators/my-validators';
+import { AsyncValidators } from '../../validators/async-validators';
 
 
 @Component({
@@ -24,39 +24,39 @@ export class ProfileComponent implements OnInit {
   isCasualBuyer = false;
 
   genders = [
-    {label: 'Please select', value: ''},
-    {label: 'Male', value: 'Male'},
-    {label: 'Female', value: 'Female'}
+    { label: 'Please select', value: '' },
+    { label: 'Male', value: 'Male' },
+    { label: 'Female', value: 'Female' }
   ];
 
   titles = [
-    {label: 'Please select', value: ''},
-    {label: 'Mr', value: 'Mr'},
-    {label: 'Mrs', value: 'Mrs'},
-    {label: 'Miss', value: 'Miss'},
-    {label: 'Ms', value: 'Ms'},
-    {label: 'Dr', value: 'Dr'}
+    { label: 'Please select', value: '' },
+    { label: 'Mr', value: 'Mr' },
+    { label: 'Mrs', value: 'Mrs' },
+    { label: 'Miss', value: 'Miss' },
+    { label: 'Ms', value: 'Ms' },
+    { label: 'Dr', value: 'Dr' }
   ];
 
   states = [
-    {label: 'Please select', value: ''},
-    {label: 'NSW', value: 'NSW'},
-    {label: 'NT', value: 'NT'},
-    {label: 'QLD', value: 'QLD'},
-    {label: 'SA', value: 'SA'},
-    {label: 'TAS', value: 'TAS'},
-    {label: 'VIC', value: 'VIC'},
-    {label: 'WA', value: 'WA'}
+    { label: 'Please select', value: '' },
+    { label: 'NSW', value: 'NSW' },
+    { label: 'NT', value: 'NT' },
+    { label: 'QLD', value: 'QLD' },
+    { label: 'SA', value: 'SA' },
+    { label: 'TAS', value: 'TAS' },
+    { label: 'VIC', value: 'VIC' },
+    { label: 'WA', value: 'WA' }
   ];
 
   countries = [
-    {label: 'Australia', value: 'Australia'},
-    {label: 'New Zealand', value: 'New Zealand'}
+    { label: 'Australia', value: 'Australia' },
+    { label: 'New Zealand', value: 'New Zealand' }
   ];
 
   formErrors = {
-    'title' : '',
-    'givenName' : '',
+    'title': '',
+    'givenName': '',
     'surname': '',
     // 'email': '',
     'dob': '',
@@ -76,20 +76,20 @@ export class ProfileComponent implements OnInit {
 
   validationMessages = {
     'title': {
-      'required':      'Title is required'
+      'required': 'Title is required'
     },
     'givenName': {
-      'required':      'First name is required',
-      'minlength':     'First name must be at least 2 characters long',
-      'maxlength':     'First name must be less than 50 characters long',
-      'pattern':       'Invalid characters. First name can only contain: '
+      'required': 'First name is required',
+      'minlength': 'First name must be at least 2 characters long',
+      'maxlength': 'First name must be less than 50 characters long',
+      'pattern': 'Invalid characters. First name can only contain: '
       + 'letters of the alphabet; an apostrophe; a hyphen; a space; or a full stop'
     },
     'surname': {
-      'required':      'Last name is required.',
-      'minlength':     'Last name must be at least 2 characters long',
-      'maxlength':     'Last name must be less than 50 characters long',
-      'pattern':       'Invalid characters. Last name can only contain: '
+      'required': 'Last name is required.',
+      'minlength': 'Last name must be at least 2 characters long',
+      'maxlength': 'Last name must be less than 50 characters long',
+      'pattern': 'Invalid characters. Last name can only contain: '
       + 'letters of the alphabet; an apostrophe; a hyphen; a space; or a full stop'
     },
     /*
@@ -99,50 +99,50 @@ export class ProfileComponent implements OnInit {
     },
     */
     'dob': {
-      'required':      'Date of birth is required',
-      'mustBeAdult':   'You must be 18 years or older to complete your eCompany profile',
+      'required': 'Date of birth is required',
+      'mustBeAdult': 'You must be 18 years or older to complete your eCompany profile',
       'dateMustBeValid': 'Invalid date. Must be DD/MM/YYYY',
       // 'pattern':       'Invalid date format. Must match DD/MM/YYYY',
     },
     'gender': {
-      'required':      'Gender is required'
+      'required': 'Gender is required'
     },
     'addressLine1': {
-      'required':      'Street Address 1 is required',
-      'maxlength':     'Street Address 1 must be less than 255 characters long',
+      'required': 'Street Address 1 is required',
+      'maxlength': 'Street Address 1 must be less than 255 characters long',
     },
     'addressLine2': {
-      'required':      'Street Address 2 is required',
-      'maxlength':     'Street Address 2 must be less than 255 characters long',
+      'required': 'Street Address 2 is required',
+      'maxlength': 'Street Address 2 must be less than 255 characters long',
     },
     'organisation': {
-      'maxlength':     'Company name must be less than 255 characters long',
+      'maxlength': 'Company name must be less than 255 characters long',
     },
     'motorDealer': {
-      'maxlength':     'Company name must be less than 50 characters long',
+      'maxlength': 'Company name must be less than 50 characters long',
     },
     'suburb': {
-      'required':      'Suburb/City is required'
+      'required': 'Suburb/City is required'
     },
     'postcode': {
-      'required':      'postcode is required',
-      'minlength':     'Postcode must be 4 digits long',
-      'maxlength':     'Postcode must be 4 digits long',
-      'pattern':       'Postcode must be numbers only',
+      'required': 'postcode is required',
+      'minlength': 'Postcode must be 4 digits long',
+      'maxlength': 'Postcode must be 4 digits long',
+      'pattern': 'Postcode must be numbers only',
       'postcodeMustBeValid': 'Postcode could not be found'
     },
     'state': {
-      'required':      'State is required'
+      'required': 'State is required'
     },
     'fax': {
-      'pattern':      'Fax No must be numbers only'
+      'pattern': 'Fax No must be numbers only'
     },
     'homePhone': {
-      'pattern':      'Tel No must be numbers only'
+      'pattern': 'Tel No must be numbers only'
     },
     'driversLicence': {
-      'minlength':      'Driver licence No. must be at least 4 digits long',
-      'maxlength':      'Driver licence No. must be less than 10 digits long'
+      'minlength': 'Driver licence No. must be at least 4 digits long',
+      'maxlength': 'Driver licence No. must be less than 10 digits long'
     }
   };
 
@@ -150,8 +150,8 @@ export class ProfileComponent implements OnInit {
   errorMsg: string;
 
   constructor(private userTokenService: UserTokenService, private pageScrollService: PageScrollService,
-              private profileService: ProfileService, private asyncValidators: AsyncValidators,
-              @Inject(DOCUMENT) private document: Document) {
+    private profileService: ProfileService, private asyncValidators: AsyncValidators,
+    @Inject(DOCUMENT) private document: Document) {
 
     PageScrollConfig.defaultScrollOffset = -50;
     PageScrollConfig.defaultDuration = 500;
@@ -174,17 +174,17 @@ export class ProfileComponent implements OnInit {
 
     this.profileService.getProfile(this.username)
       .subscribe(
-        userProfile => {
-          this.userProfile = userProfile;
-          this.buildForm();
+      userProfile => {
+        this.userProfile = userProfile;
+        this.buildForm();
 
-          this.asyncValidators.asyncValidationEventQueue$.subscribe(
-            () => this.onValueChanged());
-        },
+        this.asyncValidators.asyncValidationEventQueue$.subscribe(
+          () => this.onValueChanged());
+      },
 
-        error =>  {
-          this.serverError = <any> error;
-        }
+      error => {
+        this.serverError = <any>error;
+      }
       );
   }
 
@@ -198,7 +198,7 @@ export class ProfileComponent implements OnInit {
 
     if (!this.isCasualBuyer) {
       this.profileForm = new FormGroup({
-        'givenName' : new FormControl(buyer.givenName, [
+        'givenName': new FormControl(buyer.givenName, [
           Validators.required, Validators.minLength(2), Validators.maxLength(50), Validators.pattern(nameRegex)
         ]),
         'surname': new FormControl(buyer.surname, [
@@ -209,7 +209,7 @@ export class ProfileComponent implements OnInit {
     } else {
       this.profileForm = new FormGroup({
         'title': new FormControl(buyer.title || '', Validators.required),
-        'givenName' : new FormControl(buyer.givenName, [
+        'givenName': new FormControl(buyer.givenName, [
           Validators.required, Validators.minLength(2), Validators.maxLength(50), Validators.pattern(nameRegex)
         ]),
         'surname': new FormControl(buyer.surname, [
@@ -231,7 +231,7 @@ export class ProfileComponent implements OnInit {
         'fax': new FormControl(buyer.fax, Validators.pattern(numberOnly)),
         'organisation': new FormControl(buyer.organisation, Validators.maxLength(255)),
         'motorDealer': new FormControl(buyer.motorDealer, Validators.maxLength(50)),
-        'driversLicence': new FormControl(buyer.driversLicence, [ Validators.maxLength(10), Validators.minLength(4) ])
+        'driversLicence': new FormControl(buyer.driversLicence, [Validators.maxLength(10), Validators.minLength(4)])
       });
 
       this.profileForm.get(['country']).valueChanges.subscribe(
@@ -316,18 +316,18 @@ export class ProfileComponent implements OnInit {
 
     this.profileService.saveProfile(this.username, profileData)
       .subscribe(
-        result => {
-          const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#my-profile-spa');
-          this.pageScrollService.start(pageScrollInstance);
+      result => {
+        const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#my-profile-spa');
+        this.pageScrollService.start(pageScrollInstance);
 
-          this.userProfile = profileData;
-          this.successMsg = 'Your profile has been updated successfully';
-        },
-        error => {
-          const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#my-profile-spa');
-          this.pageScrollService.start(pageScrollInstance);
-          this.errorMsg = error.errorCause;
-        }
+        this.userProfile = profileData;
+        this.successMsg = 'Your profile has been updated successfully';
+      },
+      error => {
+        const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#my-profile-spa');
+        this.pageScrollService.start(pageScrollInstance);
+        this.errorMsg = error.errorCause;
+      }
       );
   }
 }

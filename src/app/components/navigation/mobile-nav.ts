@@ -1,5 +1,5 @@
-import {Component, ViewEncapsulation, Class, OnInit, Input} from '@angular/core';
-import {Router, NavigationEnd} from '@angular/router';
+import { Component, ViewEncapsulation, Class, OnInit, Input } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'myprofile-mobile-nav',

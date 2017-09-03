@@ -1,6 +1,6 @@
-import {Component, ViewEncapsulation, OnInit, NgZone} from '@angular/core';
-import {UserTokenService} from './services/user-token.service';
-import {PERMANENT_BUYER_YES} from './app.constants';
+import { Component, ViewEncapsulation, OnInit, NgZone } from '@angular/core';
+import { UserTokenService } from './services/user-token.service';
+import { PERMANENT_BUYER_YES } from './app.constants';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import {PERMANENT_BUYER_YES} from './app.constants';
 export class AppComponent implements OnInit {
 
   constructor(private ngZone: NgZone,
-              private userTokenService: UserTokenService) {
+    private userTokenService: UserTokenService) {
   }
 
   isCasualBuyer = true;
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
       });
   }
 
-  private setMobileDisplayMode () {
+  private setMobileDisplayMode() {
     if (window.innerWidth && window.innerWidth < 550) {
       this.mobileDisplayMode = true;
     } else {

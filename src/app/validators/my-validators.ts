@@ -1,7 +1,7 @@
-import {FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import * as moment from 'moment';
 
-export function allRequiredValidator({value}: FormGroup): { [key: string]: any } {
+export function allRequiredValidator({ value }: FormGroup): { [key: string]: any } {
   const controls = Object.keys(value || {});
   const valid = controls.every(control => !!value[control]);
 

@@ -1,7 +1,7 @@
-import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {PERMANENT_BUYER_YES} from '../../app.constants';
-import {UserTokenService} from '../../services/user-token.service';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PERMANENT_BUYER_YES } from '../../app.constants';
+import { UserTokenService } from '../../services/user-token.service';
 
 @Component({
   selector: 'verification',

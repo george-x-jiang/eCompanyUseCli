@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Http, Response, Headers} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import '../rxjs-extensions';
-import {USER_ADMIN_SERVICE_URL} from '../app.constants';
+import { USER_ADMIN_SERVICE_URL } from '../app.constants';
 
 @Injectable()
 export class BillingService {

@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormGroup, Validators, FormControl, AbstractControl} from '@angular/forms';
-import {allRequiredValidator} from '../../validators/my-validators';
-import {ProfileService} from '../../services/profile.service';
-import {UserTokenService} from '../../services/user-token.service';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { allRequiredValidator } from '../../validators/my-validators';
+import { ProfileService } from '../../services/profile.service';
+import { UserTokenService } from '../../services/user-token.service';
 
 @Component({
   selector: 'my-billing',
@@ -27,12 +27,13 @@ export class BillingComponent implements OnInit {
   billingForm: FormGroup;
 
   formErrors = {
-    'cardType': {errMessages: ''},
-    'cardNumber': {errMessages: ''},
-    'cvv': {errMessages: ''},
-    'expiryDate': {errMessages: '',
-      'month': {errMessages: ''},
-      'year': {errMessages: ''}
+    'cardType': { errMessages: '' },
+    'cardNumber': { errMessages: '' },
+    'cvv': { errMessages: '' },
+    'expiryDate': {
+      errMessages: '',
+      'month': { errMessages: '' },
+      'year': { errMessages: '' }
     }
   };
 
@@ -57,13 +58,13 @@ export class BillingComponent implements OnInit {
   };
 
   cardTypes = [
-    {label: 'Please select', value: ''},
-    {label: 'Visa', value: 'Visa'},
-    {label: 'Mastercard', value: 'Mastercard'}
+    { label: 'Please select', value: '' },
+    { label: 'Visa', value: 'Visa' },
+    { label: 'Mastercard', value: 'Mastercard' }
   ];
 
   constructor(private userTokenService: UserTokenService,
-              private profileService: ProfileService) {
+    private profileService: ProfileService) {
   }
 
   ngOnInit(): void {
@@ -79,10 +80,10 @@ export class BillingComponent implements OnInit {
   private retrieveUserFullName(username: string): void {
     this.profileService.getProfile(username)
       .subscribe(
-        userProfile => {
-          this.firstName = userProfile.givenName;
-          this.lastName = userProfile.surname;
-        }
+      userProfile => {
+        this.firstName = userProfile.givenName;
+        this.lastName = userProfile.surname;
+      }
       );
   }
 

@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import '../rxjs-extensions';
-import {USER_ADMIN_SERVICE_URL} from '../app.constants';
+import { USER_ADMIN_SERVICE_URL } from '../app.constants';
 
 @Injectable()
 export class ProfileService {
@@ -49,8 +49,8 @@ export class ProfileService {
   }
 
   saveProfile(externalAuthId: string, profileData: any): Observable<any> {
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const options = new RequestOptions({headers: headers});
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
 
     return this.http.put(this.USER_PROFILE_SERVICE_URL + '/' + externalAuthId, profileData, options)
       .map(res => res.status + ' ' + res.statusText)
