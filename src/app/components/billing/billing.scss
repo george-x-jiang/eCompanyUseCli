@@ -107,7 +107,7 @@
   .front {
     z-index: 2;
     transform: rotateY(0deg);
-    background: url('../../../assets/Credit-card-front.png');
+    background: url('Credit-card-front.png');
     background-size: contain;
   }
 
@@ -155,7 +155,7 @@
 
   .back {
     transform: rotateY(-180deg);
-    background: url('../../../assets/Credit-card-back.png');
+    background: url('Credit-card-back.png');
     background-size: contain;
   }
 
