@@ -14,9 +14,6 @@ export class BillingService {
   }
 
   getBillingStatus(externalAuthId: string): Observable<any> {
-    // example header (not necessary)
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
     // create the request, store the `Observable` for subsequent subscribers
     const observable = this.http.get(this.USER_BILLING_STATUS_SERVICE_URL + '/' + externalAuthId)
       .map(this.extractData);
