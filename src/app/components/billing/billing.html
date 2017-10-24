@@ -13,8 +13,8 @@
                 </select>
                 <p class="help-block">Visa or Mastercard Only</p>
                 <span class="card-img-form">
-                    <img src="../../../assets/Visa_Logo.png" alt="VISA" class="sml-version visa" *ngIf="isCardType('Visa')">
-                    <img src="../../../assets/mastercard-logo.png" alt="MASTERCARD" class="sml-version mastercard" *ngIf="isCardType('Mastercard')">
+                    <img src="assets/Visa_Logo.png" alt="VISA" class="sml-version visa" *ngIf="isCardType('Visa')">
+                    <img src="assets/mastercard-logo.png" alt="MASTERCARD" class="sml-version mastercard" *ngIf="isCardType('Mastercard')">
                 </span>
                 <small class="text-danger" *ngIf="formErrors.cardType.errMessages">
                     {{ formErrors.cardType.errMessages }}
