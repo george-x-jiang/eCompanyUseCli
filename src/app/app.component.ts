@@ -10,8 +10,7 @@ import { PERMANENT_BUYER_YES } from './app.constants';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private ngZone: NgZone,
-    private userTokenService: UserTokenService) {
+  constructor(private userTokenService: UserTokenService) {
   }
 
   isCasualBuyer = true;
@@ -21,11 +20,9 @@ export class AppComponent implements OnInit {
     this.setMobileDisplayMode();
 
     // the following code is used for development purpose only
-    // window.onresize = () => {
-    //   this.ngZone.run(() => {
-    //     this.setMobileDisplayMode();
-    //   });
-    // };
+    window.onresize = () => {
+      this.setMobileDisplayMode();
+    };
 
     this.userTokenService.getTokenDetails()
       .subscribe(tokenDetails => {
